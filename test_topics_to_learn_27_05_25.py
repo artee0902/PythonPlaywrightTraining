@@ -38,6 +38,18 @@ def test_extract_multiple_elements(page):
     for i in sort_by_text:
         print(i)      #returns all sort by titles
 
+def test_wait_dynamically_new_page(page):
+    print("Testing dynamic wait for a new page...")
+
+    # Click on a link or button that opens a new page or triggers a dynamic change
+    # (Modify selector as per real UI element. Below is an example.)
+    page.click("text=Mobiles")  # This should trigger navigation or content change
+
+    # Wait for a specific element on the new page to be visible
+    page.wait_for_selector("//span[normalize-space()='CATEGORIES']")  # Flipkart's product grid container
+
+    # Assert that product grid is visible, indicating page has loaded
+    assert page.locator("//span[normalize-space()='CATEGORIES']").is_visible(), "Product grid not visible after navigation"
 
 
 
